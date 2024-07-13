@@ -1,5 +1,6 @@
-class ShippingUpdate {
-//    +previousStatus: String
-//    +newStatus: String
-//    +timeStamp: Long
+class ShippingUpdate(
+    var previousStatus: String,
+    var newStatus: String,
+    var timeStamp: Long
+) {
 }

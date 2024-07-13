@@ -41,7 +41,7 @@ fun App() {
             Button(onClick = {
                 shipments.add(
                     Shipment(
-                        id = IdGenerator.ID++,
+                        id = "1",
                         content = shipmentContent
                     )
                 )

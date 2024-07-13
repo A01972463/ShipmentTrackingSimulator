@@ -1,0 +1,3 @@
+class TrackingSimulator {
+//    -shipments: Shipment[]
+}

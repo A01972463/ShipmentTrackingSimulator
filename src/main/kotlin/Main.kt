@@ -41,8 +41,10 @@ fun App() {
             Button(onClick = {
                 shipments.add(
                     Shipment(
-                        id = IdGenerator.ID++,
-                        content = shipmentContent
+                        id = shipmentContent,
+                        status = "created",
+                        expectedDeliveryDateTimestamp = 1652712855468,
+                        currentLocation = "",
                     )
                 )
             }) {
@@ -57,7 +59,8 @@ fun App() {
                         .border(1.dp, Color.Black, RoundedCornerShape(4.dp))
                         .padding(4.dp)
                 ) {
-                    Text(it.content)
+                    Text("Tracking Shipment: ${it.id}\n" +
+                            "Status: ${it.status}")
                 }
             }
         }

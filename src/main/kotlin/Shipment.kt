@@ -1,5 +1,5 @@
 data class Shipment (
-    val id: String,
+    val id: Int,
     val content: String,     // To be removed
 //    var status: String,
 //    var expectedDeliveryDateTimestamp: Long,

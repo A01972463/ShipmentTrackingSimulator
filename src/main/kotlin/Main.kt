@@ -50,6 +50,12 @@ fun App() {
             }) {
                 Text("Save")
             }
+
+            Button(onClick = {
+                shipments.removeLast()
+            }) {
+                Text("Remove Last")
+            }
         }
         LazyColumn {
             items(shipments, key = { it.id }) {

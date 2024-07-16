@@ -40,12 +40,6 @@ fun App() {
                         shipmentNotes = mutableListOf(),
                         shipmentUpdateHistory = mutableListOf()
                     )
-//                    Shipment(
-//                        id = shipmentID,
-//                        status = "created",
-//                        expectedDeliveryDateTimestamp = 1652712855468,
-//                        currentLocation = "",
-//                    )
                 )
             }) {
                 Text("Track")

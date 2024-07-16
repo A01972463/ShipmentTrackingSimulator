@@ -8,7 +8,7 @@ data class Shipment(
     private val subscribers = mutableListOf<(String) -> Unit>()
 
     fun addNote(note: String) {
-        // Todo: Add note
+//         Todo: Add note
     }
     fun addUpdate(update: String) {
 //        Todo: Add update

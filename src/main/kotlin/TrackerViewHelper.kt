@@ -13,19 +13,13 @@ class TrackerViewHelper(
         private set
 
     var DeliveryDate = expectedShipmentDeliveryDate
-        private set(value) {
-            field = value
-        }
+        private set
 
     var Notes = shipmentNotes
-        private set(value) {
-            field = value
-        }
+        private set
 
     var History = shipmentUpdateHistory
-        private set(value) {
-            field = value
-        }
+        private set
 
     init {
         val shipment = Shipment(
@@ -38,8 +32,4 @@ class TrackerViewHelper(
             Status = it
         }
     }
-
-//    fun +previousStatus: String
-//    fun +newStatus: String
-//    fun +timeStamp: Long
 }

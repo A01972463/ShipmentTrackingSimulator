@@ -17,56 +17,61 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
-object IdGenerator {
-    var ID = 1
-    init {
-        println("I got created!")
-    }
-}
-
 @Composable
 @Preview
 fun App() {
-    var shipmentContent by remember { mutableStateOf("") }
-    val shipments = remember { mutableStateListOf<Shipment>() }
+    var shipmentID by remember { mutableStateOf("") }
+    val shipments = remember { mutableStateListOf<TrackerViewHelper>() }
 
     MaterialTheme {
         Column {
 
         Row {
-            TextField(shipmentContent, onValueChange = {
-                shipmentContent = it
+            TextField(shipmentID, onValueChange = {
+                shipmentID = it
             })
 
             Button(onClick = {
                 shipments.add(
-                    Shipment(
-                        id = shipmentContent,
-                        status = "created",
-                        expectedDeliveryDateTimestamp = 1652712855468,
-                        currentLocation = "",
+                    TrackerViewHelper(
+                        shipmentID = shipmentID,
+                        shipmentStatus = "created",
+                        expectedShipmentDeliveryDate = 19999488398,
+                        shipmentNotes = mutableListOf(),
+                        shipmentUpdateHistory = mutableListOf()
                     )
+//                    Shipment(
+//                        id = shipmentID,
+//                        status = "created",
+//                        expectedDeliveryDateTimestamp = 1652712855468,
+//                        currentLocation = "",
+//                    )
                 )
             }) {
-                Text("Save")
+                Text("Track")
             }
 
-            Button(onClick = {
-                shipments.removeLast()
-            }) {
-                Text("Remove Last")
-            }
         }
         LazyColumn {
-            items(shipments, key = { it.id }) {
+            items(shipments, key = { it.ID }) {
                 Row(
                     modifier = Modifier
                         .padding(8.dp)
                         .border(1.dp, Color.Black, RoundedCornerShape(4.dp))
                         .padding(4.dp)
                 ) {
-                    Text("Tracking Shipment: ${it.id}\n" +
-                            "Status: ${it.status}")
+                    Text("Tracking Shipment: ${it.ID}\n" +
+                            "Status: ${it.Status}\n" +
+                            "Location:\n" +
+                            "Expected Delivery: ${it.DeliveryDate}\n" +
+                            "\nStatus Updates: ${it.Status}\n" +
+                            "\nNotes: ${it.Notes}")
+
+                    Button(onClick = {
+                        shipments.remove(it)
+                    }) {
+                        Text("X")
+                    }
                 }
             }
         }

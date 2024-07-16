@@ -1,19 +1,23 @@
 class TrackerViewHelper(
-    state: State,
     shipmentID: String,
-    shipmentTotes: MutableList<String>,
-    shipmentUpdateHistory: MutableList<String>,
-    expectedShipmentDeliveryDate: MutableList<String>,
-    shipmentStatus: String
+    shipmentStatus: String,
+    expectedShipmentDeliveryDate: Long,
+    shipmentNotes: MutableList<String>,
+    shipmentUpdateHistory: MutableList<String>
 
-//*all attributes have a private setter in this class
 ) {
     var ID = shipmentID
+        private set
+
+    var Status = shipmentStatus
+        private set
+
+    var DeliveryDate = expectedShipmentDeliveryDate
         private set(value) {
             field = value
         }
 
-    var  Totes = shipmentTotes
+    var Notes = shipmentNotes
         private set(value) {
             field = value
         }
@@ -23,15 +27,17 @@ class TrackerViewHelper(
             field = value
         }
 
-    var DeliveryDate = expectedShipmentDeliveryDate
-        private set(value) {
-            field = value
+    init {
+        val shipment = Shipment(
+            id = ID,
+            status = Status,
+            expectedDeliveryDateTimestamp = DeliveryDate,
+            currentLocation = "",
+        )
+        shipment.subscribe {
+            Status = it
         }
-
-    var Status = shipmentStatus
-        private set(value) {
-            field = value
-        }
+    }
 
 //    fun +previousStatus: String
 //    fun +newStatus: String
